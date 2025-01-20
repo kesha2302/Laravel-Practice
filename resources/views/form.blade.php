@@ -66,13 +66,16 @@
             </div>
           </div> --}}
 
-          <x-input/>
-          <x-input/>
-          <x-input/>
-          <x-input/>
+          <x-input type="text" name="name" label="Name"/>
+          <x-input type="email" name="email" label="Email"/>
+          <x-input type="password" name="password" label="Password"/>
+          <x-input type="password" name="password_confirmation" label="Confirmed Password"/>
 
 
         <button type="submit" class="btn btn-primary">Sign in</button>
+
+
+        <x-ctitle title="Hello"/>
       </form>
 
   </body>

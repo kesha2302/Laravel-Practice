@@ -19,7 +19,6 @@ class RegisterController extends Controller
                 'password' => 'required|confirmed',
                 'password_confirmation'=>'required'
             ]
-
          );
 
         echo "<pre>";

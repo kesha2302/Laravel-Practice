@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Customers;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -88,3 +90,13 @@ Route::get('/about', function(){
 
 Route::get('/register',[RegisterController::class,'index']);
 Route::post('/register',[RegisterController::class,'register']);
+
+
+Route::get('/customer',function(){
+    $customers = Customers :: all();
+    echo "<pre>";
+    print_r($customers->toArray());
+});
+
+Route::get('/customers',[CustomerController::class,'index']);
+Route::post('/customers2',[CustomerController::class,'store']);
