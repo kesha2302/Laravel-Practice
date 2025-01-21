@@ -43,4 +43,10 @@ class CustomerController extends Controller
 
         return redirect('/');
     }
+
+    public function view(){
+        $customers = Customers::all();
+        $data = compact('customers');
+        return view('dataview')->with($data);
+    }
 }

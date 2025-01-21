@@ -16,7 +16,7 @@ Route:: get('/demo', function(){
 });
 
 
-Route::get('/about', function(){
+Route::get('/about1', function(){
  return "This is About Page";
 });
 
@@ -25,7 +25,6 @@ Route::get('/about', function(){
 Route::post('/submit',function(){
     return "Form submitted";
 });
-
 
 //Put request
 Route::put('/updtae',function(){
@@ -40,18 +39,11 @@ return "Data Deleted";
 
 // Any request
 Route::any('/any', function(){
-    return "REsponse to any HTTP method";
+    return "Response to any HTTP method";
 });
 
 
-// match request
-Route::match(['get','post'],'/handle',function(){
-    return "Handles ant GET and POST request.";
-});
 
-Route::get('/dashboard',function(){
-    return "Welcome to Dashboard!";
-})->name('Dashboard');
 
 
 Route::get('user/{id}', function($id){
@@ -59,7 +51,7 @@ Route::get('user/{id}', function($id){
 });
 
 
-Route::get('user1/{name}/{id?}', function ($name,$id = null){
+Route::get('user1/{name}/{id}', function ($name,$id){
 echo $name;
 echo $id;
 });
@@ -78,6 +70,11 @@ Route::get('/demo2/{name?}',function($name = null){
     $data = compact('name','demo');
     return view('demo2')->with($data);
 });
+
+Route::get('/home2',function(){
+    return view('home2');
+});
+
 
 Route::get('/', function(){
     return view('home');
@@ -100,3 +97,37 @@ Route::get('/customer',function(){
 
 Route::get('/customers',[CustomerController::class,'index']);
 Route::post('/customers2',[CustomerController::class,'store']);
+
+Route::get('/view',[CustomerController::class,'view']);
+
+Route::get('/byid', function(){
+    $customers = Customers::find(10);
+    if($customers){
+        echo '<pre>';
+        print_r($customers->toArray());
+    }
+    else{
+        echo "Customer Id not found";
+    }
+});
+
+Route::get('/bywhere', function(){
+    $customers = Customers::where('dob','>','2024-01-01')->get();
+    if($customers->isNotEmpty()){
+        Echo "<pre>";
+        print_r($customers->toArray());
+    }else{
+        echo "No customer found after date 20204";
+    }
+});
+
+Route::get("/byfirst",function(){
+    $customers = Customers::where('name','Kinjal')->first();
+    if($customers){
+        echo '<pre>';
+        print_r($customers->toArray());
+    }
+    else{
+        echo "No customer found";
+    }
+});
