@@ -131,3 +131,10 @@ Route::get("/byfirst",function(){
         echo "No customer found";
     }
 });
+
+
+Route::get('/customer/delete/{id}',[CustomerController::class,'delete'])->name('customer.delete');
+
+Route::get('/customer/edit/{id}',[CustomerController::class,'edit'])->name('customer.edit');
+Route::post('/customer/update/{id}',[CustomerController::class,'update'])->name('customer.update');
+

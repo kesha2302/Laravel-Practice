@@ -10,14 +10,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-    <h1 class="text-center mt-2">Registration Form</h1>
+    @extends('layouts.main')
+
+    @section('main-section')
+    <h1 class="text-center mt-2">{{$title}}</h1>
     <div class="card mt-3 mx-auto" style="width:60rem;">
     <div class="card-body">
-    <form class="row g-3" action="{{url('/customers2')}} " method="POST">
+    {{-- <form class="row g-3" action="{{url('/customers2')}} " method="POST"> --}}
+        <form class="row g-3" action="{{url($url)}} " method="POST">
         @csrf
         <div class="col-md-6">
             <label for="inputEmail4" class="form-label">Name:</label>
-            <input type="text" class="form-control" name="name" >
+            <input type="text" class="form-control" name="name" value={{$customer->name}}>
             <span class='text-danger'>
             @error('name')
             {{$message}}
@@ -26,7 +30,7 @@
           </div>
           <div class="col-md-6">
             <label for="inputPassword4" class="form-label">Email:</label>
-            <input type="email" class="form-control" name="email" >
+            <input type="email" class="form-control" name="email" value={{$customer->email}} >
             <span class='text-danger'>
             @error('email')
             {{$message}}
@@ -36,7 +40,7 @@
 
         <div class="col-md-6">
           <label for="inputEmail4" class="form-label mt-2">Password:</label>
-          <input type="password" class="form-control" name="password" >
+          <input type="password" class="form-control" name="password" value={{$customer->password}}>
           <span class='text-danger'>
           @error('password')
           {{$message}}
@@ -55,7 +59,7 @@
 
         <div class="col-12">
           <label for="inputAddress" class="form-label mt-2">Address:</label>
-          <input type="text" class="form-control" name="address">
+          <input type="text" class="form-control" name="address" value={{$customer->address}}>
           <span class='text-danger'>
           @error('address')
           {{$message}}
@@ -64,7 +68,7 @@
         </div>
         <div class="col-md-4">
           <label for="inputState" class="form-label mt-2">State:</label>
-          <input type="text" class="form-control" name="state">
+          <input type="text" class="form-control" name="state" value={{$customer->state}}>
           <span class='text-danger'>
           @error('state')
           {{$message}}
@@ -73,7 +77,7 @@
         </div>
         <div class="col-md-6">
             <label for="inputCity" class="form-label mt-2">Country:</label>
-            <input type="text" class="form-control" name="country" >
+            <input type="text" class="form-control" name="country" value={{$customer->country}} >
             <span class='text-danger'>
             @error('country')
             {{$message}}
@@ -84,23 +88,23 @@
             <label for="inputEmail4" class="form-label mt-2">Gender:</label>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" value="M"
-                >
+                {{$customer->gender == "M" ? 'checked' : ''}}>
                 <label class="form-check-label" for="exampleRadios2">Male</label>
             </div>
             <div class="form-check">
                  <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" value="F"
-               >
+                 {{$customer->gender == "F" ? 'checked' : ''}}>
                  <label class="form-check-label" for="exampleRadios2">Female</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" value="O"
-                >
+                {{$customer->gender == "O" ? 'checked' : ''}}>
                 <label class="form-check-label" for="exampleRadios2">Other</label>
             </div>
           </div>
           <div class="col-md-6">
             <label for="inputPassword4" class="form-label mt-2">DOB:</label>
-            <input type="date" class="form-control" name="dob" >
+            <input type="date" class="form-control" name="dob"  value={{$customer->dob}}>
           </div>
 
           <div class="col-12 text-center">
@@ -109,5 +113,6 @@
       </form>
     </div>
     </div>
+    @endsection
   </body>
 </html>
