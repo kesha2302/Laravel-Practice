@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Customers;
 use Illuminate\Support\Facades\Route;
@@ -138,3 +139,5 @@ Route::get('/customer/delete/{id}',[CustomerController::class,'delete'])->name('
 Route::get('/customer/edit/{id}',[CustomerController::class,'edit'])->name('customer.edit');
 Route::post('/customer/update/{id}',[CustomerController::class,'update'])->name('customer.update');
 
+//Layout2
+Route::get('/indexhome',[LayoutController::class,'index']);

@@ -12,12 +12,16 @@ class CustomerController extends Controller
     public function index(){
         $customer = new Customers();
         $title = "Registration Form";
-        $url = url('/customer2');
+        $url = url('/customers2');
         $data = compact('customer','title','url');
+
         return view ('form2')->with($data);
     }
 
     public function store(Request $request){
+
+        p($request->all());
+        die;
 
         $request->validate(
             [
