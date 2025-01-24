@@ -32,10 +32,10 @@
             <tr>
                 <td scope="row">{{$customer->name}}</td>
                 <td>{{$customer->email}}</td>
-                {{-- <td>{{$customer->dob}}</td> --}}
+                <td>{{$customer->dob}}</td>
 
                 {{-- <td> {{ \Carbon\Carbon::parse($customer->dob)->format('d-m-Y')}}</td> --}}
-                <td>{{formatted_date($customer->dob,"D-M-Y")}}</td>
+                {{-- <td>{{formatted_date($customer->dob,"D-M-Y")}}</td> --}}
 
                 <td>@if ($customer->gender == "M")
                     Male

@@ -4,7 +4,10 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Customers;
+use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -141,3 +144,26 @@ Route::post('/customer/update/{id}',[CustomerController::class,'update'])->name(
 
 //Layout2
 Route::get('/indexhome',[LayoutController::class,'index']);
+
+
+//Session
+Route::get('/get-session',function(){
+    // $session = session()->all();
+    $session = Session::all();
+    p($session);
+});
+
+Route::get('/set-session', function(Request $request){
+    $request->session()->put('user_name','Kesha');
+    $request->session()->put('user_id','1');
+
+    return redirect('get-session');
+});
+
+
+Route::get('/destory-session', function(){
+    //  session()->forget('user_name');
+    Session::forget(['user_name','user_id']);
+
+     return redirect('get-session');
+});

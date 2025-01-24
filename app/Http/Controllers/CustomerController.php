@@ -20,8 +20,8 @@ class CustomerController extends Controller
 
     public function store(Request $request){
 
-        p($request->all());
-        die;
+        // p($request->all());
+        // die;
 
         $request->validate(
             [
