@@ -99,4 +99,28 @@ class CustomerController extends Controller
 
         return redirect('/view');
     }
+
+    public function trash(){
+        $customers = Customers::onlyTrashed()->get();
+        $data = compact('customers');
+        return view('trashdata')->with($data);
+    }
+
+    public function restore($id){
+        $customers = Customers::withTrashed()->find($id);
+        if(!is_null($customers)){
+            $customers->restore();
+        }
+
+        return redirect('/view');
+    }
+
+    public function forcedelete($id){
+        $customers = Customers::withTrashed()->find($id);
+        if(!is_null($customers)){
+            $customers->forceDelete();
+        }
+
+        return redirect()->back();
+    }
 }

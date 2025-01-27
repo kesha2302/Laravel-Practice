@@ -14,7 +14,9 @@
 
     @section('main-section')
 
-    <a class="btn btn-primary m-2" href="{{url('/trash')}}" style="float: right;" role="button">Trash Data</a>
+    <a class="btn btn-primary m-2" href="{{url('/view')}}" style="float: right;" role="button">Back</a>
+
+    <h1>Trash Data</h1>
 
     <table class="table table-bordered mt-2">
         <thead>
@@ -50,9 +52,10 @@
                 <td>{{$customer->state}}</td>
                 <td>{{$customer->country}}</td>
                 <td>
-                    {{-- <a name="" id="" class="btn btn-danger" href="{{url('/customer/delete/')}}/{{$customer->customer_id}}" role="button">Delete</a> --}}
-                    <a name="" id="" class="btn btn-danger" href="{{route('customer.delete',['id'=>$customer->customer_id])}}" role="button">Trash</a>
-                    <a name="" id="" class="btn btn-primary" href="{{route('customer.edit',['id'=>$customer->customer_id])}}" role="button">Edit</a>
+
+                    <a name="" id="" class="btn btn-danger" href="{{route('customer.forcedelete',['id'=>$customer->customer_id])}}" role="button">Delete</a>
+                    <a name="" id="" class="btn btn-primary" href="{{route('customer.restore',['id'=>$customer->customer_id])}}" role="button">Restore</a>
+                </td>
             </tr>
             @endforeach
         </tbody>

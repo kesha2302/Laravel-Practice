@@ -167,3 +167,9 @@ Route::get('/destory-session', function(){
 
      return redirect('get-session');
 });
+
+
+// Soft Delete
+Route::get('/trash',[CustomerController::class,'trash']);
+Route::get('/customer/restore/{id}',[CustomerController::class,'restore'])->name('customer.restore');
+Route::get('/customer/forcedelete/{id}',[CustomerController::class,'forcedelete'])->name('customer.forcedelete');
