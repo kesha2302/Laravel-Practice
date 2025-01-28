@@ -3,8 +3,8 @@
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UploadController;
 use App\Models\Customers;
-use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -173,3 +173,8 @@ Route::get('/destory-session', function(){
 Route::get('/trash',[CustomerController::class,'trash']);
 Route::get('/customer/restore/{id}',[CustomerController::class,'restore'])->name('customer.restore');
 Route::get('/customer/forcedelete/{id}',[CustomerController::class,'forcedelete'])->name('customer.forcedelete');
+
+
+//Uploading Image file
+Route::get('/upload',[UploadController::class,'index']);
+Route::post('/uploadfile',[UploadController::class,'upload']);
