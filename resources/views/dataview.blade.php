@@ -14,6 +14,13 @@
 
     @section('main-section')
 
+    <form class="d-flex mt-2" role="search" style="margin-left: 700px;">
+        <input class="form-control me-2" type="search" placeholder="Search by name or email" name="search" aria-label="Search">
+        <button class="btn btn-dark me-2" type="submit" style="margin-left:10px;">Search</button>
+        <a class="btn btn-primary " href="{{url('/view')}}" role="button">Reset</a>
+      </form>
+
+
     <a class="btn btn-primary m-2" href="{{url('/trash')}}" style="float: right;" role="button">Trash Data</a>
 
     <table class="table table-bordered mt-2">
@@ -57,6 +64,13 @@
             @endforeach
         </tbody>
     </table>
+
+    <div class="row">
+        <div class='col-md-12 d-flex justify-content-center'>
+        {{$customers->links('pagination::bootstrap-5')}}
+    </div>
+    </div>
+
     @endsection
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

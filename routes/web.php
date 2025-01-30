@@ -8,6 +8,7 @@ use App\Models\Customers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -80,10 +81,6 @@ Route::get('/home2',function(){
 });
 
 
-Route::get('/', function(){
-    return view('home');
-});
-
 Route::get('/about', function(){
     return view('about');
 });
@@ -93,14 +90,13 @@ Route::get('/register',[RegisterController::class,'index']);
 Route::post('/register',[RegisterController::class,'register']);
 
 
-Route::get('/customer',function(){
-    $customers = Customers :: all();
-    echo "<pre>";
-    print_r($customers->toArray());
-});
+// Route::get('/customer',function(){
+//     $customers = Customers :: all();
+//     echo "<pre>";
+//     print_r($customers->toArray());
+// });
 
-Route::get('/customers',[CustomerController::class,'index']);
-Route::post('/customers2',[CustomerController::class,'store']);
+
 
 Route::get('/view',[CustomerController::class,'view']);
 
@@ -136,11 +132,11 @@ Route::get("/byfirst",function(){
     }
 });
 
-
-Route::get('/customer/delete/{id}',[CustomerController::class,'delete'])->name('customer.delete');
-
-Route::get('/customer/edit/{id}',[CustomerController::class,'edit'])->name('customer.edit');
-Route::post('/customer/update/{id}',[CustomerController::class,'update'])->name('customer.update');
+// Route::get('/customer',[CustomerController::class,'index']);
+// Route::post('/customers2',[CustomerController::class,'store']);
+// Route::get('/customer/delete/{id}',[CustomerController::class,'delete'])->name('customer.delete');
+// Route::get('/customer/edit/{id}',[CustomerController::class,'edit'])->name('customer.edit');
+// Route::post('/customer/update/{id}',[CustomerController::class,'update'])->name('customer.update');
 
 //Layout2
 Route::get('/indexhome',[LayoutController::class,'index']);
@@ -171,10 +167,31 @@ Route::get('/destory-session', function(){
 
 // Soft Delete
 Route::get('/trash',[CustomerController::class,'trash']);
-Route::get('/customer/restore/{id}',[CustomerController::class,'restore'])->name('customer.restore');
-Route::get('/customer/forcedelete/{id}',[CustomerController::class,'forcedelete'])->name('customer.forcedelete');
+// Route::get('/customer/restore/{id}',[CustomerController::class,'restore'])->name('customer.restore');
+// Route::get('/customer/forcedelete/{id}',[CustomerController::class,'forcedelete'])->name('customer.forcedelete');
 
 
 //Uploading Image file
 Route::get('/upload',[UploadController::class,'index']);
 Route::post('/uploadfile',[UploadController::class,'upload']);
+
+Route::post('/customers2',[CustomerController::class,'store']);
+
+
+//Grouping a Route
+
+Route::group(['prefix'=>'/customer'],function(){
+Route::get('',[CustomerController::class,'index']);
+Route::get('delete/{id}',[CustomerController::class,'delete'])->name('customer.delete');
+Route::get('edit/{id}',[CustomerController::class,'edit'])->name('customer.edit');
+Route::post('update/{id}',[CustomerController::class,'update'])->name('customer.update');
+Route::get('restore/{id}',[CustomerController::class,'restore'])->name('customer.restore');
+Route::get('forcedelete/{id}',[CustomerController::class,'forcedelete'])->name('customer.forcedelete');
+});
+
+
+//Larvel Localization
+Route::get('/{lang?}', function($lang = null){
+    App::setLocale($lang ?? 'en');
+    return view('home');
+});

@@ -8,6 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </head>
   <body>
 
@@ -28,12 +30,22 @@ Guest
                 <a class="nav-link" style="color: black" aria-current="page" href="{{url('/')}}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{url('/customers')}}"  style="color: black">Register</a>
+                <a class="nav-link" href="{{url('/customer')}}"  style="color: black">Register</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{url('/view')}}"  style="color: black">View</a>
               </li>
-
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Language
+                </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{url('/')}}">Home</a></li>
+                <li><a class="dropdown-item" href="{{url('/hindi')}}">Hindi</a></li>
+                <li><a class="dropdown-item" href="{{url('/french')}}">French</a></li>
+                <li><a class="dropdown-item" href="{{url('/spanish')}}">Spanish</a></li>
+              </ul>
+              </li>
 
             </ul>
             <form class="d-flex" role="search" style="margin-left: 700px;">

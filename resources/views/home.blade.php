@@ -15,6 +15,7 @@
     @section('main-section')
     <h1>This is Home Page</h1>
 
+    <h2 class="text-center">@lang('lang.welcome')</h2>
     @endsection
 
     <!-- Optional JavaScript -->
