@@ -3,6 +3,7 @@
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TestingController;
 use App\Http\Controllers\UploadController;
 use App\Models\Customers;
 use Illuminate\Support\Facades\Route;
@@ -191,7 +192,10 @@ Route::get('forcedelete/{id}',[CustomerController::class,'forcedelete'])->name('
 
 
 //Larvel Localization
-Route::get('/{lang?}', function($lang = null){
-    App::setLocale($lang ?? 'en');
-    return view('home');
-});
+// Route::get('/{lang?}', function($lang = null){
+//     App::setLocale($lang ?? 'en');
+//     return view('home');
+// });
+
+//one to one relation
+Route::get('/onetoone',[TestingController::class,'index']);
