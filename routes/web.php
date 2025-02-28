@@ -198,4 +198,10 @@ Route::get('forcedelete/{id}',[CustomerController::class,'forcedelete'])->name('
 // });
 
 //one to one relation
+// Route::get('/onetoone',[TestingController::class,'index']);
+// Route::get('/onetomany',[TestingController::class,'index2'])->middleware('check');
+
+Route::middleware('check')->group(function(){
 Route::get('/onetoone',[TestingController::class,'index']);
+Route::get('/onetomany',[TestingController::class,'index2']);
+});

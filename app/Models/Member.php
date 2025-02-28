@@ -9,8 +9,13 @@ class Member extends Model
     protected $table= "members";
     protected $primaryKey = "member_id";
 
-    function getGroup()
+    // function getGroup()
+    // {
+    //     return $this->hasOne('App\Models\Group', 'group_id');
+    // }
+
+    public function group()
     {
-        return $this->hasOne('App\Models\Group', 'group_id');
+        return $this->hasMany('App\Models\Group', 'group_id' ,'group_id');
     }
 }
