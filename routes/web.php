@@ -205,3 +205,5 @@ Route::middleware('check')->group(function(){
 Route::get('/onetoone',[TestingController::class,'index']);
 Route::get('/onetomany',[TestingController::class,'index2']);
 });
+
+Route::get('/member/{member}',[TestingController::class,'member']);

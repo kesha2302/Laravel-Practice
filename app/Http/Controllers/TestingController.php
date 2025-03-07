@@ -20,4 +20,8 @@ class TestingController extends Controller
         // return Group::get();
         return Group::with('member')->get();
     }
+
+    public function member(Member $member){
+        return $member;
+    }
 }
